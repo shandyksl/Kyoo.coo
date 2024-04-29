@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yoo.Core.Common\Yoo.Core.Common.csproj" />
+    <ProjectReference Include="..\Yoo.Core.DataAccess\Yoo.Core.DataAccess.csproj" />
+    <ProjectReference Include="..\Yoo.Core.Model\Yoo.Core.Model.csproj" />
+  </ItemGroup>
+</Project>

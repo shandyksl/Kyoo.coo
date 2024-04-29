@@ -1,0 +1,40 @@
+# ci的配置文件
+
+# 编译
+compile:
+  go:
+    # 一般无需配置，有默认值
+    # buildCommand: go version && go mod tidy CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o mainApp -buildvcs=false
+
+    # 项目的依赖库，一般ba保存在构建服务器的 /opt/go-libs/分支名/依赖库名， 如果有多个依赖库，就用空格分开
+    # goLibsArray: "fbsportslib sports-base"
+
+    # 编译用的镜像, 默认值是 golang 19
+    # compileImage: harbor.devs2023.net/tools/go-proto:1.19
+
+  java:
+    # 编译用的镜像，jdk17
+    # mavenImgName: maven:3-eclipse-temurin-17
+
+    # 编译命令
+    # buildCommand: "mvn -Dmaven.test.skip=true clean compile package"
+
+  dotnet:
+    # 源码的相对路径
+    # srcPath: .
+    
+    # 默认的编译命令，该文件需要在源码路径下
+    # buildCommand: ci-build.sh
+    
+    # 编译的镜像
+    # compileImage: mcr.microsoft.com/dotnet/sdk:7.0-bullseye-slim
+    # compileImage: mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim
+    compileImage: mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim
+
+# 镜像信息：目录名/镜像名
+image:
+  # 镜像名，如果不写，默认值就是git的项目名，不分大小写
+  #name: 默认
+
+  # 目录名，如果不写，默认值就是git的项目所在的群组的名字，不分大小写
+  # dir: 群组名

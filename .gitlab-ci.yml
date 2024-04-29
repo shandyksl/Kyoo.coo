@@ -1,0 +1,55 @@
+# 加载基类，基类主要是包含 on_fail on_success 等方法，场景是 check build deploy
+include:
+  - remote: "https://scripts.inner.devs2023.net/base/base.yaml"
+
+variables:
+  # 群 ugs-运维-kl
+  WEB_HOOK_TOKEN: "T06RS5M56UE/B06STGF6AMV/46igjMUaBLttv7XRe3JIKoNg"
+
+.runner-tags:
+  # 指定runner名
+  tags: 
+    - book-builder
+
+  # 在哪个分支上可用
+  only:
+    - staging
+    - release
+
+# 构建
+build:
+  extends: 
+    - .runner-tags
+    - .build:base
+
+  # 所需执行的脚本
+  script:
+    # 公用脚本：构建镜像
+    - . <(curl -s https://scripts.inner.devs2023.net/ci-dotnet/compile-with-docker.sh)
+    - . <(curl -s https://scripts.inner.devs2023.net/commons/build-docker.sh)
+
+# 推送
+push:
+  extends:
+    - .runner-tags
+    - .push:base
+
+# 部署，trigger是不能有tags的
+#trigger:staging:
+#  extends:
+#    - .trigger:deploy
+    
+#  trigger: ci-cd/ugs/ugs2-dev/staging-yoo
+
+#  only:
+#    - staging
+
+# 部署，trigger是不能有tags的
+# trigger:release:
+#   extends:
+#     - .trigger:deploy
+
+#   trigger: ci-cd/ugs/ugs2-prod/preprod-dataservice
+
+#   only:
+#     - release

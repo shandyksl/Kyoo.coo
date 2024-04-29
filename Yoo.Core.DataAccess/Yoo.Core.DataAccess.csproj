@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yoo.Core.Common\Yoo.Core.Common.csproj" />
+    <ProjectReference Include="..\Yoo.Core.Model\Yoo.Core.Model.csproj" />
+  </ItemGroup>
+
+</Project>
